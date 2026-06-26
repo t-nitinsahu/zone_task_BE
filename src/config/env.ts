@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-import { apiEnvSchema, type ApiEnv } from "@zone/shared";
+import { apiEnvSchema, type ApiEnv } from "../shared/index.js";
 
 const parsed = apiEnvSchema.safeParse(process.env);
 

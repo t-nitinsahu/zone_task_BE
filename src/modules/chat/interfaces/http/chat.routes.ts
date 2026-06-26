@@ -1,4 +1,4 @@
-import { createMessageSchema } from "@zone/shared";
+import { createMessageSchema } from "../../../../shared/index.js";
 import { Router } from "express";
 
 import { asyncHandler } from "../../../../core/middlewares/asyncHandler.js";

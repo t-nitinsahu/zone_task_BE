@@ -1,6 +1,6 @@
 import type { Server as HttpServer } from "http";
 
-import type { CreateMessageInput } from "@zone/shared";
+import type { CreateMessageInput } from "../../shared/index.js";
 import { Server } from "socket.io";
 
 import type { ChatService } from "../../modules/chat/application/ChatService.js";

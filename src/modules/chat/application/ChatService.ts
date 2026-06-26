@@ -1,4 +1,4 @@
-import { createMessageSchema, type CreateMessageInput, type MessageDto } from "@zone/shared";
+import { createMessageSchema, type CreateMessageInput, type MessageDto } from "../../../shared/index.js";
 import { StatusCodes } from "http-status-codes";
 
 import { AppError } from "../../../core/errors/AppError.js";
