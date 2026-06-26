@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  NEW
+  QUALIFIED
+  CONTACTED
+  WON
+  LOST
+  ARCHIVED
+}
+
+enum HubspotStatus {
+  PENDING_SYNC
+  SYNCED
+  FAILED
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  userName  String
+  content   String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model Lead {
+  id               String        @id @default(uuid())
+  firstName        String
+  lastName         String
+  email            String        @unique
+  company          String?
+  budget           Decimal?      @db.Decimal(14, 2)
+  estimatedValue   Decimal?      @db.Decimal(14, 2)
+  hubspotContactId String?       @unique
+  localStatus      LeadStatus    @default(NEW)
+  hubspotStatus    HubspotStatus @default(PENDING_SYNC)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([createdAt])
+  @@index([localStatus])
+  @@index([hubspotStatus])
+}
